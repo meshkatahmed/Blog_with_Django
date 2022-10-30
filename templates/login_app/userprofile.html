@@ -6,7 +6,7 @@
   {% if user.user_profile %}
     <img src="{{user.user_profile.profile_pic}}" alt="None" class="rounded-circle" width="100px">
   {% else %}
-    <img src="{% static 'images/profilepics/x.jpg' %}" alt="x" class="rounded-circle" width="100px">
+    <img src="{% static 'static/media/images/profilepics/x.jpg' %}" alt="x" class="rounded-circle" width="100px">
   {% endif %}
     <br>
     <a href="{% url 'login_app:profilepicchange' %}" class="btn btn-info btn-lg">Change Profile Pic</a>
