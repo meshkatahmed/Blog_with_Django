@@ -4,12 +4,15 @@
 {% block body_block %}
   <h2>Your Profile: </h2>
   {% if user.user_profile %}
-    <img src="{{user.user_profile.profile_pic}}" alt="None" class="rounded-circle" width="100px">
-  {% else %}
-    <img src="{% static 'static/media/images/profilepics/x.jpg' %}" alt="x" class="rounded-circle" width="100px">
-  {% endif %}
+    <img src="static/{{user.user_profile.profile_pic}}" alt="None" class="rounded-circle" width="100px">
     <br>
     <a href="{% url 'login_app:profilepicchange' %}" class="btn btn-info btn-lg">Change Profile Pic</a>
+  {% else %}
+    <img src="{% static 'media/images/profilepics/x.jpg' %}" alt="x" class="rounded-circle" width="100px">
+    <br>
+    <a href="{% url 'login_app:profilepicadd' %}" class="btn btn-info btn-lg">Add Profile Pic</a>
+  {% endif %}
+
     <p>Username: {{ user.username }}</p>
     <p>E-mail: {{ user.email }}</p>
     <p>Name: {{ user.first_name }} {{ user.last_name }}</p>

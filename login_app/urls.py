@@ -11,6 +11,7 @@ urlpatterns = [
     path('profile/',views.user_profile,name='profile'),
     path('userprofilechange/',views.user_profile_change,name='changeprofileinfo'),
     path('password/',views.pass_change,name='passwordchange'),
+    path('profilepicadd/',views.profile_pic_add,name='profilepicadd'),
     path('profilepicchange/',views.profile_pic_change,name='profilepicchange'),
 ]
 

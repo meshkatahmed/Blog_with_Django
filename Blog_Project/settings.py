@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'blog_app',
     'address',
     'crispy_forms',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 #bootstrap,bootstarp3,bootstarp4,uni-form
