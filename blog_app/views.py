@@ -7,10 +7,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 import uuid
 # Create your views here.
-def blog_list(request):
-    return render(request,'blog_app/bloglist.html',context={})
-
-
 class CreateBlog(CreateView,LoginRequiredMixin):
     model = Blog
     fields = ['blog_title','blog_content','blog_image']
@@ -23,3 +19,9 @@ class CreateBlog(CreateView,LoginRequiredMixin):
         blog_obj.slug = title.replace(" ","-") + "-" + str(uuid.uuid4())
         blog_obj.save()
         return HttpResponseRedirect(reverse('home'))
+
+class BlogList(ListView):
+    model = Blog
+    context_object_name = 'blogs'
+    template_name = 'blog_app/bloglist.html'
+    #queryset = Blog.objects.order_by('-publish_date')
