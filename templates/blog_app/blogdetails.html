@@ -9,12 +9,19 @@
       <h4>Posted By: @{{blog.author}}</h4>
       <i><h6>Published On: {{blog.publish_date}}</h6></i>
       <i><h6>Updated On: {{blog.update_date}}</h6></i>
+      <h6>{{blog.blog_like.count}} likes | {{blog.blog_comment.count}} comments</h6>
     </div>
     <div class="col-sm-6">
       <img src="{% static '{{blog.blog_image}}' %}" alt="None" width="100%">
     </div>
     <p>{{blog.blog_content|linebreaks}}</p>
   </div>
+  <hr>
+  {% if liked %}
+    <a href="{% url 'blog_app:unlikedpost' pk=blog.pk %}"><i class="fa-solid fa-thumbs-down fa-2x"></i></a>
+  {% else %}
+    <a href="{% url 'blog_app:likedpost' pk=blog.pk %}"><i class="fa-solid fa-thumbs-up fa-2x"></i></a>
+  {% endif %}
   <div class="row">
     <div class="col-sm-6">
         <hr>
