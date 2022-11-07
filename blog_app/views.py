@@ -25,3 +25,9 @@ class BlogList(ListView):
     context_object_name = 'blogs'
     template_name = 'blog_app/bloglist.html'
     #queryset = Blog.objects.order_by('-publish_date')
+
+@login_required
+def blog_details(request,slug):
+    blog = Blog.objects.get(slug=slug)
+
+    return render(request,'blog_app/blogdetails.html',context={'blog':blog})

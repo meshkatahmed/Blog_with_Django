@@ -8,10 +8,11 @@
     <h6><i>{{blog.publish_date}}</i></h6>
       <div class="row">
         <div class="col-sm-4">
-          <img src="{% static '{{blog.blog-image}}' %}" alt="{{blog.blog_title}}" title="{{blog.blog_title}}">
+          <img src="{% static '{{blog.blog_image}}' %}" alt="{{blog.blog_title}}">
+          <!-- title="{{blog.blog_title}}"> -->
         </div>
         <div class="col-sm-8">
-          <p>{{blog.blog_content|range_filter|linebreaks}}</p>
+          <p>{{blog.blog_content|range_filter|linebreaks}}<a href="{% url 'blog_app:blogdetails' slug=blog.slug %}">Read more</a></p>
           <h6>Posted by: <a href="#">{{blog.author}}</a></h6>
         </div>
       </div>
