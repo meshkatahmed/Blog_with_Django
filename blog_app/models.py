@@ -18,7 +18,7 @@ class Blog(models.Model):
 class Comment(models.Model):
     blog = models.ForeignKey(Blog,on_delete=models.CASCADE,related_name='blog_comment')
     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='user_comment')
-    comment = models.TextField(verbose_name="write your comment")
+    comment = models.TextField(verbose_name="Write your comment")
     comment_date = models.DateTimeField(auto_now_add=True)
 
     class meta:
