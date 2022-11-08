@@ -7,4 +7,6 @@ urlpatterns = [
     path('details/<slug>/',views.blog_details,name='blogdetails'),
     path('liked/<pk>/',views.liked,name='likedpost'),
     path('unliked/<pk>/',views.unliked,name='unlikedpost'),
+    path('myblogs/',views.MyBlogs.as_view(),name='myblogs'),
+    path('editblog/<pk>/',views.EditBlog.as_view(),name='editblog'),
 ]

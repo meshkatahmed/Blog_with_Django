@@ -8,6 +8,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 import uuid
 # Create your views here.
+class MyBlogs(LoginRequiredMixin,TemplateView):
+    template_name = 'blog_app/myblogs.html'
+
 class CreateBlog(CreateView,LoginRequiredMixin):
     model = Blog
     fields = ['blog_title','blog_content','blog_image']
@@ -63,3 +66,11 @@ def unliked(request,pk):
     already_liked = Like.objects.filter(blog=blog,user=user)
     already_liked.delete()
     return HttpResponseRedirect(reverse('blog_app:blogdetails',kwargs={'slug':blog.slug}))
+
+class EditBlog(LoginRequiredMixin,UpdateView):
+    model = Blog
+    fields = ['blog_title','blog_content','blog_image']
+    template_name = 'blog_app\editblog.html'
+
+    def get_success_url(self,**kwargs):
+        return reverse_lazy('blog_app:blogdetails',kwargs={'slug':self.object.slug})
